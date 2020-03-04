@@ -18,6 +18,6 @@ public class Customer {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "customer")
     private List<Farm> farms;
 }

@@ -1,7 +1,3 @@
-server:
-  port: 8081
 spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/farm-registry-db
-    username: admin
-    password: admin
+  profiles:
+    active: local

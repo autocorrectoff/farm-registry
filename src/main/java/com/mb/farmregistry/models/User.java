@@ -22,7 +22,7 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "users")
     private List<Farm> farms = new ArrayList<>();
 
     @Column(name = "is_admin")

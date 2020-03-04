@@ -21,11 +21,12 @@ public class Farm {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @NotFound(action = NotFoundAction.IGNORE)
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
     private Customer customer;
 
-    @ManyToMany(mappedBy = "farms", fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "user_farm", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "farm_id"))
     private List<User> users = new ArrayList<>();
 }
