@@ -1,7 +1,9 @@
 package com.mb.farmregistry.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
@@ -9,7 +11,9 @@ import java.util.List;
 @Entity
 @Table(name = "customer")
 @Getter
+@NoArgsConstructor
 @Builder
+@AllArgsConstructor
 public class Customer {
 
     @Id

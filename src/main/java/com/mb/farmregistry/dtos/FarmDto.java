@@ -2,10 +2,7 @@ package com.mb.farmregistry.dtos;
 
 import com.mb.farmregistry.models.Customer;
 import com.mb.farmregistry.models.Farm;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;

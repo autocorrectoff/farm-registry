@@ -1,7 +1,9 @@
 package com.mb.farmregistry.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
@@ -12,7 +14,9 @@ import java.util.List;
 @Entity
 @Table(name = "farm")
 @Getter
+@NoArgsConstructor
 @Builder
+@AllArgsConstructor
 public class Farm {
 
     @Id
