@@ -1,5 +1,6 @@
 package com.mb.farmregistry.models;
 
+import lombok.Builder;
 import lombok.Getter;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
@@ -11,6 +12,7 @@ import java.util.List;
 @Entity
 @Table(name = "farm")
 @Getter
+@Builder
 public class Farm {
 
     @Id
@@ -21,7 +23,7 @@ public class Farm {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.ALL)
     @NotFound(action = NotFoundAction.IGNORE)
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
     private Customer customer;

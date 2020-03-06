@@ -1,5 +1,6 @@
 package com.mb.farmregistry.dtos;
 
+import com.mb.farmregistry.models.Customer;
 import com.mb.farmregistry.models.Farm;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,10 +20,13 @@ public class FarmDto {
 
     private String name;
 
+    private Long customerId;
+
     public static FarmDto entityToDto(Farm farm) {
         FarmDto dto = new FarmDto();
         dto.setId(farm.getId());
         dto.setName(farm.getName());
+        dto.setCustomerId(farm.getCustomer().getId());
         return dto;
     }
 
@@ -33,5 +37,10 @@ public class FarmDto {
             dtos.add(dto);
         }
         return dtos;
+    }
+
+    public static Farm dtoToEntity(FarmDto dto) {
+        Farm farm = Farm.builder().name(dto.getName()).customer(Customer.builder().id(dto.getId()).build()).build();
+        return farm;
     }
 }

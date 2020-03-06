@@ -5,3 +5,6 @@ spring:
     url: jdbc:postgresql://localhost:5432/farm-registry-db
     username: admin
     password: admin
+  jpa:
+    show-sql: true
+
