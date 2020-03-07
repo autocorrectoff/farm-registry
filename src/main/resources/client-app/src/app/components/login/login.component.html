@@ -1,0 +1,9 @@
+<h3>Login User</h3>
+User Email: <br>
+<input type="email" [(ngModel)]="email"> <br>
+User Password: <br>
+<input type="password" [(ngModel)]="password">
+<br>
+<h4 *ngIf="showErrorMessage">Invalid email or password</h4>
+<br>
+<button (click)="login()">Login</button>
