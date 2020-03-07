@@ -10,4 +10,6 @@ public interface IUserService {
     Map<String, Object> createUser(UserDto dto);
 
     UserDto loginUser(UserDto dto);
+
+    boolean isAdminUser(Long id);
 }

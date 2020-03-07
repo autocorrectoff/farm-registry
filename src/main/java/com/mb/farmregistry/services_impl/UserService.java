@@ -45,4 +45,13 @@ public class UserService implements IUserService {
         }
         return null;
     }
+
+    @Override
+    public boolean isAdminUser(Long id) {
+        Optional<User> userOpt = userRepository.findById(id);
+        if(userOpt.isPresent()) {
+            return userOpt.get().getIsAdmin();
+        }
+        return false;
+    }
 }

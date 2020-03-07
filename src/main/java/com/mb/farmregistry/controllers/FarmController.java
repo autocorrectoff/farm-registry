@@ -1,8 +1,9 @@
 package com.mb.farmregistry.controllers;
 
 import com.mb.farmregistry.dtos.FarmDto;
-import com.mb.farmregistry.models.Farm;
 import com.mb.farmregistry.services.IFarmService;
+import com.mb.farmregistry.services.IUserService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,20 +16,25 @@ import java.util.Map;
 public class FarmController {
 
     private final IFarmService farmService;
+    private final IUserService userService;
 
-    public FarmController(IFarmService farmService) {
+    public FarmController(IFarmService farmService, IUserService userService) {
         this.farmService = farmService;
+        this.userService = userService;
     }
 
-    @GetMapping("/search/{userId}")
-    public ResponseEntity<List<FarmDto>> getFarms(@PathVariable Long userId) {
+    @GetMapping("/search")
+    public ResponseEntity<List<FarmDto>> getFarms(@RequestHeader("userId") Long userId) {
         List<FarmDto> farmList = farmService.getByUserId(userId);
         return ResponseEntity.ok(farmList);
     }
 
     @PostMapping(value = "/create", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Map<String, Long>> createFarm(@RequestBody FarmDto dto) {
-        Map<String, Long> id = farmService.createFarm(dto);
-        return ResponseEntity.ok(id);
+    public ResponseEntity<?> createFarm(@RequestBody FarmDto dto, @RequestHeader("userId") Long userId) {
+        if(userService.isAdminUser(userId)) {
+            Map<String, Long> id = farmService.createFarm(dto);
+            return ResponseEntity.ok(id);
+        }
+        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 }
