@@ -6,10 +6,15 @@
 
 ### local setup
 ``set up a postgres db instance using Docker``
+
 docker run --name farm-registry -v farm-registry:/var/lib/postgresql/data -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -p 5432:5432 postgres:12.1-alpine
 
 ``execute the scripts from src/data dir to create tables and populate those with some data``
+
 ``run with maven``
+
 mvn spring-boot:run
 
 ``the app will run at: http://localhost:8081``
+
+``there are two users: test@example.com with password 123 and test1@example.com with password 234``
