@@ -1,0 +1,7 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    url: jdbc:postgresql://farm-registry.clncfht3m4pj.eu-west-1.rds.amazonaws.com:5431/farm-registry-db
+    username: postgres_admin
+    password: booDrTQ8PrPGo7qhBYXa
